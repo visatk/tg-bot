@@ -1,0 +1,12 @@
+# Copy this file to .dev.vars (never commit .dev.vars)
+# Set production secrets with: wrangler secret put SECRET_NAME
+
+# Telegram Bot token from @BotFather
+BOT_TOKEN=1234567890:AAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# Telegram webhook secret token (any random string you choose)
+# Must match the secret_token you set when calling setWebhook
+WEBHOOK_SECRET=replace_with_a_random_secret_string
+
+# Optional: Admin Telegram user IDs (comma-separated)
+ADMIN_IDS=123456789,987654321
