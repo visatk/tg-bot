@@ -1,0 +1,75 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tg-bot",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-13",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // ─── Observability ────────────────────────────────────────────────────────
+  "observability": {
+    "enabled": true,
+    "logs": { "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 0.1 }
+  },
+
+  // ─── KV Namespaces ────────────────────────────────────────────────────────
+  "kv_namespaces": [
+    {
+      "binding": "KV_CACHE",
+      "id": "REPLACE_WITH_KV_ID",
+      "preview_id": "REPLACE_WITH_KV_PREVIEW_ID"
+    }
+  ],
+
+  // ─── D1 Database ──────────────────────────────────────────────────────────
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tg-bot-db",
+      "database_id": "REPLACE_WITH_D1_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // ─── Queues ───────────────────────────────────────────────────────────────
+  "queues": {
+    "producers": [
+      { "binding": "EVENT_QUEUE", "queue": "tg-bot-events" }
+    ],
+    "consumers": [
+      {
+        "queue": "tg-bot-events",
+        "max_batch_size": 50,
+        "max_batch_timeout": 5,
+        "max_retries": 3
+      }
+    ]
+  },
+
+  // ─── Non-secret vars (secrets go via `wrangler secret put`) ───────────────
+  "vars": {
+    "BOT_USERNAME": "MyAwesomeBot",
+    "LOG_LEVEL": "info"
+  },
+
+  // ─── Environments ─────────────────────────────────────────────────────────
+  "env": {
+    "production": {
+      "vars": {
+        "BOT_USERNAME": "MyAwesomeBot",
+        "LOG_LEVEL": "warn"
+      },
+      "observability": {
+        "enabled": true,
+        "logs": { "head_sampling_rate": 0.5 },
+        "traces": { "enabled": true, "head_sampling_rate": 0.05 }
+      }
+    },
+    "staging": {
+      "vars": {
+        "BOT_USERNAME": "MyAwesomeBotStaging",
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+}
