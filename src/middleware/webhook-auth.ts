@@ -1,10 +1,3 @@
-// src/middleware/webhook-auth.ts
-// Verifies incoming Telegram webhook requests using:
-//   1. X-Telegram-Bot-Api-Secret-Token header (constant-time comparison)
-//   2. Optional Telegram IP allowlist check
-//
-// Reference: https://core.telegram.org/bots/api#setwebhook
-
 import type { MiddlewareHandler } from "hono";
 
 // Telegram's official IP ranges (update if Telegram publishes changes)
