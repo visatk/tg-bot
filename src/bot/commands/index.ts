@@ -1,8 +1,3 @@
-// src/bot/commands/index.ts
-// Central command registry. Register all command handlers here.
-// The router reads this to dispatch /commands and also to set bot commands
-// via setMyCommands.
-
 import type { CommandHandler } from "../../types/bot";
 import { startCommand } from "./start";
 import { helpCommand } from "./help";
