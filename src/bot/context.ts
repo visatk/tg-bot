@@ -1,7 +1,3 @@
-// src/bot/context.ts
-// Builds a BotContext from a raw Telegram Update + Worker env.
-// Keep this factory pure — no side-effects, no I/O.
-
 import type { TelegramUpdate } from "../types/telegram";
 import type { BotContext } from "../types/bot";
 import { TelegramClient } from "../services/telegram";
