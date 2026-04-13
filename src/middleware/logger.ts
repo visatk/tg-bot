@@ -1,7 +1,3 @@
-// src/middleware/logger.ts
-// Structured JSON logger. Use console.log/warn/error so Workers Observability
-// assigns the correct severity level in the dashboard.
-
 export type LogLevel = "debug" | "info" | "warn" | "error";
 
 export interface Logger {
