@@ -1,13 +1,3 @@
-// src/bot/router.ts
-// Central update dispatcher. Receives a BotContext and routes it to the
-// correct handler based on the update type and content.
-//
-// Responsibilities:
-//   • Command dispatch (with admin guard)
-//   • Per-user rate limiting (backed by KV)
-//   • User upsert into D1 (via ctx.waitUntil — non-blocking)
-//   • Routing to message / callback_query / inline_query handlers
-
 import type { BotContext } from "../types/bot";
 import { parseCommand } from "../types/bot";
 import { COMMAND_MAP } from "./commands";
