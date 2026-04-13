@@ -1,11 +1,3 @@
-// src/index.ts
-// Worker entry point.
-//
-// Handles three export handlers:
-//   • fetch  — HTTP webhook from Telegram + management endpoints
-//   • queue  — Background event processing from EVENT_QUEUE
-//   • scheduled — Cron jobs (optional; add triggers in wrangler.jsonc)
-
 import { Hono } from "hono";
 import type { TelegramUpdate } from "./types/telegram";
 import { buildContext } from "./bot/context";
